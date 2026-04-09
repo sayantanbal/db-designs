@@ -23,13 +23,25 @@ const MIME_BY_EXTENSION: Record<string, string> = {
 
 const DATENSEN_OVERLAY_DIV_PATTERN =
   /<div[^>]*onclick="window\.open\('https:\/\/www\.datensen\.com'[^>]*>\s*<\/div>/gi;
+const DATENSEN_TRIAL_BADGE_PATTERN = /<div[^>]*>\s*Trial\s*<\/div>/gi;
+const DATENSEN_TRIAL_CLASS_PATTERN = /class="([^"]*\bmm-trial\b[^"]*)"/gi;
 
 function getContentType(filePath: string): string {
   return MIME_BY_EXTENSION[path.extname(filePath).toLowerCase()] ?? "application/octet-stream";
 }
 
 function sanitizeServedHtml(html: string): string {
-  return html.replace(DATENSEN_OVERLAY_DIV_PATTERN, "");
+  const withoutOverlay = html.replace(DATENSEN_OVERLAY_DIV_PATTERN, "");
+  const withoutTrialBadges = withoutOverlay.replace(DATENSEN_TRIAL_BADGE_PATTERN, "");
+
+  return withoutTrialBadges.replace(DATENSEN_TRIAL_CLASS_PATTERN, (_match, classValue: string) => {
+    const cleanedClasses = classValue
+      .split(/\s+/)
+      .filter((name) => name.length > 0 && name !== "mm-trial")
+      .join(" ");
+
+    return `class="${cleanedClasses}"`;
+  });
 }
 
 type RouteContext = {
