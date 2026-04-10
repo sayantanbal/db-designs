@@ -5,6 +5,7 @@ export type DbProject = {
   slug: string;
   name: string;
   sourceDir: string;
+  submittedAt: string;
 };
 
 const APP_DIR = path.join(process.cwd(), "app");
@@ -22,6 +23,14 @@ function isSafeSlug(slug: string): boolean {
   return /^[a-zA-Z0-9_-]+$/.test(slug);
 }
 
+function formatSubmissionDate(date: Date): string {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  }).format(date);
+}
+
 export function getDbProjects(): DbProject[] {
   if (!fs.existsSync(APP_DIR)) {
     return [];
@@ -37,10 +46,14 @@ export function getDbProjects(): DbProject[] {
       return fs.existsSync(indexPath) && fs.statSync(indexPath).isFile();
     })
     .map((entry) => {
+      const indexPath = path.join(APP_DIR, entry.name, "index.html");
+      const submittedAt = formatSubmissionDate(fs.statSync(indexPath).mtime);
+
       return {
         slug: entry.name,
         name: titleCaseFromSlug(entry.name),
         sourceDir: path.join(APP_DIR, entry.name),
+        submittedAt,
       };
     })
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -56,7 +69,10 @@ export function getDbProjectBySlug(slug: string): DbProject | null {
   return getDbProjects().find((project) => project.slug === slug) ?? null;
 }
 
-export function resolveDbProjectFile(slug: string, requestedSegments: string[]): string | null {
+export function resolveDbProjectFile(
+  slug: string,
+  requestedSegments: string[],
+): string | null {
   const project = getDbProjectBySlug(slug);
   if (!project) {
     return null;
@@ -71,7 +87,10 @@ export function resolveDbProjectFile(slug: string, requestedSegments: string[]):
   const absolutePath = path.resolve(project.sourceDir, requestedPath);
   const relativeToProject = path.relative(project.sourceDir, absolutePath);
 
-  if (relativeToProject.startsWith("..") || path.isAbsolute(relativeToProject)) {
+  if (
+    relativeToProject.startsWith("..") ||
+    path.isAbsolute(relativeToProject)
+  ) {
     return null;
   }
 

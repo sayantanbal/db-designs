@@ -62,6 +62,9 @@ export default function DbAssignmentsPage() {
                   <CardDescription>
                     Slug: {project.slug}
                   </CardDescription>
+                  <CardDescription>
+                    Submitted: {project.submittedAt}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="flex items-center justify-between gap-3">
                   <Link href={`/db/${project.slug}`} className="inline-flex">
