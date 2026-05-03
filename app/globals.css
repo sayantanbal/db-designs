@@ -24,3 +24,29 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
 }
+
+@keyframes meals-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.meals-fade-in {
+  animation: meals-fade-in 600ms ease-out both;
+}
+
+.meals-card {
+  animation: meals-fade-in 600ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meals-fade-in,
+  .meals-card {
+    animation: none;
+  }
+}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CircleCheckBig, Globe2, Sparkles, Users } from "lucide-react";
+import { ArrowRight, CircleCheckBig, Globe2, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -29,12 +29,24 @@ const freeApiProjects: FreeApiProject[] = [
       "Fetch and display user profiles from the Random Users API in a clean, card-based layout.",
     status: "Done",
   },
+  {
+    slug: "meals",
+    title: "Meals Listing Interface",
+    cohort: "Web Dev Cohort 2026",
+    timeline: "May 2 - May 3, 2026",
+    description:
+      "Browse meals from the FreeAPI Meals endpoint with category, cuisine, and ingredient highlights.",
+    status: "Done",
+  },
 ];
 
 export default function FreeApiAssignmentsPage() {
   return (
     <main className="min-h-dvh bg-[radial-gradient(circle_at_15%_10%,#e6f9ff_0%,#f7fbff_38%,#f6f2ff_100%)] px-4 py-8 sm:px-6 lg:px-10">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
+        <div className="inline-flex w-fit items-center rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-700">
+          Cohort Assignment Hub
+        </div>
         <section className="rounded-3xl border border-sky-100 bg-white/85 p-6 shadow-sm backdrop-blur sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div className="space-y-3">
