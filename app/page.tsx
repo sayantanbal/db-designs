@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Database } from "lucide-react";
+import { ArrowRight, Database, Globe2 } from "lucide-react";
 import { Button as HeroButton } from "@heroui/react";
 
 import { Button } from "@/components/ui/button";
@@ -16,8 +16,8 @@ export default function Home() {
           Assignment Portfolio
         </h1>
         <p className="max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base">
-          Open your cohort database assignment index and launch each project from a
-          responsive dashboard.
+          Open your cohort database assignment index and launch each project
+          from a responsive dashboard.
         </p>
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -27,9 +27,12 @@ export default function Home() {
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
-          <HeroButton size="sm" variant="secondary" isDisabled>
-            More Sections Coming Soon
-          </HeroButton>
+          <Link href="/freeapi" className="inline-flex">
+            <Button size="lg" variant="outline">
+              Explore FreeAPI Assignments
+              <Globe2 className="h-4 w-4" aria-hidden="true" />
+            </Button>
+          </Link>
         </div>
       </section>
     </main>
