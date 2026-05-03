@@ -21,7 +21,7 @@ export default function DbAssignmentsPage() {
         <section className="rounded-3xl border border-sky-100 bg-white/80 p-5 shadow-sm backdrop-blur sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-3">
-              <Chip color="default" size="sm" variant="secondary">
+              <Chip className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
                 Cohort Assignment Hub
               </Chip>
               <h1 className="text-balance text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
