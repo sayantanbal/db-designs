@@ -36,6 +36,17 @@ body {
   }
 }
 
+@keyframes videos-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .meals-fade-in {
   animation: meals-fade-in 600ms ease-out both;
 }
@@ -44,9 +55,14 @@ body {
   animation: meals-fade-in 600ms ease-out both;
 }
 
+.video-fade-in {
+  animation: videos-fade-in 650ms ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .meals-fade-in,
-  .meals-card {
+  .meals-card,
+  .video-fade-in {
     animation: none;
   }
 }

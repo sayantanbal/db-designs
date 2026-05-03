@@ -21,6 +21,24 @@ type FreeApiProject = {
 
 const freeApiProjects: FreeApiProject[] = [
   {
+    slug: "auth",
+    title: "Authentication App",
+    cohort: "Web Dev Cohort 2026",
+    timeline: "May 2 - May 3, 2026",
+    description:
+      "Complete auth flow with register, login, logout, and current user profile details.",
+    status: "Done",
+  },
+  {
+    slug: "random-cats",
+    title: "Random Cat Viewer",
+    cohort: "Web Dev Cohort 2026",
+    timeline: "May 2 - May 3, 2026",
+    description:
+      "Fetch a fresh cat portrait on demand and explore breed traits with every refresh.",
+    status: "Done",
+  },
+  {
     slug: "random-users",
     title: "Random Users UI",
     cohort: "Web Dev Cohort 2026",
@@ -36,6 +54,42 @@ const freeApiProjects: FreeApiProject[] = [
     timeline: "May 2 - May 3, 2026",
     description:
       "Browse meals from the FreeAPI Meals endpoint with category, cuisine, and ingredient highlights.",
+    status: "Done",
+  },
+  {
+    slug: "random-jokes",
+    title: "Jokes Viewer",
+    cohort: "Web Dev Cohort 2026",
+    timeline: "May 2 - May 3, 2026",
+    description:
+      "Browse random jokes with category tags and page insights from the FreeAPI endpoint.",
+    status: "Done",
+  },
+  {
+    slug: "random-products",
+    title: "Product Listing Interface",
+    cohort: "Web Dev Cohort 2026",
+    timeline: "May 2 - May 3, 2026",
+    description:
+      "Showcase random products with pricing, ratings, discounts, and stock details in a clean storefront grid.",
+    status: "Done",
+  },
+  {
+    slug: "quotes",
+    title: "Quotes Listing",
+    cohort: "Web Dev Cohort 2026",
+    timeline: "May 2 - May 3, 2026",
+    description:
+      "Curate inspiring quotes with author highlights, tags, and browsing controls.",
+    status: "Done",
+  },
+  {
+    slug: "youtube-videos",
+    title: "YouTube Videos Listing",
+    cohort: "Web Dev Cohort 2026",
+    timeline: "May 2 - May 3, 2026",
+    description:
+      "Browse a YouTube-style feed with thumbnails, engagement stats, and channel context.",
     status: "Done",
   },
 ];
@@ -95,7 +149,10 @@ export default function FreeApiAssignmentsPage() {
                     </Button>
                   </Link>
                   <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
-                    <CircleCheckBig className="h-3.5 w-3.5" aria-hidden="true" />
+                    <CircleCheckBig
+                      className="h-3.5 w-3.5"
+                      aria-hidden="true"
+                    />
                     {project.status}
                   </div>
                 </div>
